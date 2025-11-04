@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previsão do Tempo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <link rel="icon" href="amcharts_weather_icons_1.0.0/favicon/favicon.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="loader-container">
+        <svg class="pl" width="240" height="240" viewBox="0 0 240 240">
+            <circle class="pl__ring pl__ring--a" cx="120" cy="120" r="105" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 660" stroke-dashoffset="-330" stroke-linecap="round"></circle>
+            <circle class="pl__ring pl__ring--b" cx="120" cy="120" r="35" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 220" stroke-dashoffset="-110" stroke-linecap="round"></circle>
+            <circle class="pl__ring pl__ring--c" cx="85" cy="120" r="70" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round"></circle>
+            <circle class="pl__ring pl__ring--d" cx="155" cy="120" r="70" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round"></circle>
+        </svg>
+    </div>
+    <div class="container">
+    <h1 id="titulo-principal">ClimaAgora</h1>
+        <div class="unit-toggle">
+            <span class="unit-label">°C</span>
+            <label class="switch">
+                <input type="checkbox" id="unit-switch">
+                <span class="slider round"></span>
+            </label>
+            <span class="unit-label">°F</span>
+        </div>
+
+        <!-- BUSCA -->
+        <div class="busca">
+            <input type="text" id="cidade" placeholder="Digite o nome da cidade">
+            <button id="buscar" class="search-button btn-shine"><span>Buscar</span></button>
+            <button id="usar-localizacao" class="location-button btn-shine"><span>Usar Localização Atual</span></button>
+            <ul id="sugestoes" class="sugestoes"></ul>
+        </div>
+        <div id="error-container" style="display: none;"></div>
+
+        <div class="clima-wrapper">
+            <!-- RESULTADO DO CLIMA -->
+            <div id="resultado" class="resultado">
+                <h2 id="nome-cidade"></h2>
+                <div id="alertas-clima"></div>
+                <img id="icone-clima" src="amcharts_weather_icons_1.0.0/animated/weather.svg" alt="Ícone do tempo">
+                <p id="descricao"></p>
+                <p id="temperatura"></p>
+                <p id="sensacao"></p>
+                <p id="umidade"></p>
+                <p id="vento"></p>
+                <div class="detalhes-adicionais">
+                    <div>
+                        <p>Nascer do Sol</p>
+                        <p id="nascer-do-sol">--:--</p>
+                    </div>
+                    <div>
+                        <p>Pôr do Sol</p>
+                        <p id="por-do-sol">--:--</p>
+                    </div>
+                    <div>
+                        <p>Visibilidade</p>
+                        <p id="visibilidade">-- km</p>
+                    </div>
+                    <div>
+                        <p>Pressão</p>
+                        <p id="pressao">-- hPa</p>
+                    </div>
+                    <div>
+                        <p>Qualidade do Ar</p>
+                        <p id="qualidade-ar">--</p>
+                    </div>
+                    <div>
+                        <p>Rajada de Vento</p>
+                        <p id="rajada-vento">-- km/h</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PREVISÃO 5 DIAS -->
+            <div id="previsao-5-dias" class="previsao-5-dias">
+                <h3>Previsão para os próximos 5 dias:</h3>
+                <!-- Cards adicionados pelo JS -->
+            </div>
+        </div>
+
+        <!-- PREVISÃO HORA A HORA -->
+        <div id="previsao-hora-a-hora" class="previsao-hora-a-hora">
+            <h3>Previsão para as próximas horas:</h3>
+            <div class="previsao-hora-a-hora-container">
+                <!-- Cards adicionados pelo JS -->
+            </div>
+        </div>
+
+        <!-- MAPA DO CLIMA -->
+        <div id="mapa-clima-container">
+            <h3>Mapa do Clima</h3>
+            <div id="mapa-controles">
+                <button class="mapa-controle-botao active" data-layer="precipitation_new">Precipitação</button>
+                <button class="mapa-controle-botao" data-layer="clouds_new">Nuvens</button>
+                <button class="mapa-controle-botao" data-layer="temp_new">Temperatura</button>
+                <button class="mapa-controle-botao" data-layer="wind_new">Vento</button>
+                <button class="mapa-controle-botao" data-layer="pressure_new">Pressão</button>
+            </div>
+            <div id="mapa-clima"></div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+    <script src="script.js"></script>
+</body>
+</html>
