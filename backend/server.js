@@ -49,6 +49,42 @@ app.get('/api/weather', async (req, res) => {
     }
 });
 
+/**
+ * Endpoint que atua como um proxy para os TILES (imagens) do mapa.
+ * Recebe os parâmetros do tile, busca a imagem na OpenWeatherMap com a chave segura
+ * e a repassa (stream) para o cliente.
+ */
+app.get('/api/map/:layer/:z/:x/:y', async (req, res) => {
+    const { layer, z, x, y } = req.params;
+
+    // Lista de camadas permitidas para segurança
+    const allowedLayers = ['precipitation_new', 'clouds_new', 'temp_new', 'wind_new', 'pressure_new'];
+    if (!allowedLayers.includes(layer)) {
+        return res.status(400).send('Camada de mapa inválida');
+    }
+
+    const tileUrl = `https://tile.openweathermap.org/map/${layer}/${z}/${x}/${y}.png?appid=${apiKey}`;
+
+    try {
+        const tileResponse = await fetch(tileUrl);
+
+        if (!tileResponse.ok) {
+            return res.status(tileResponse.status).send(tileResponse.statusText);
+        }
+
+        // Define os cabeçalhos da resposta com base na resposta da OpenWeatherMap
+        res.setHeader('Content-Type', tileResponse.headers.get('content-type'));
+        res.setHeader('Content-Length', tileResponse.headers.get('content-length'));
+
+        // Transmite a imagem diretamente para o cliente
+        tileResponse.body.pipe(res);
+
+    } catch (error) {
+        console.error('Erro no proxy do mapa:', error);
+        res.status(500).send('Erro ao buscar o tile do mapa.');
+    }
+});
+
 app.listen(port, () => {
     console.log(`Servidor backend rodando em http://localhost:${port}`);
 });

@@ -142,8 +142,9 @@ input {
     border: none;
     border-radius: 5px;
     font-family: 'Poppins', sans-serif;
-    max-width: 400px; /* Limita a largura do input */
-    width: 100%; /* Garante que o input ocupe a largura disponível até o max-width */
+    font-size: 1.1em; 
+    max-width: 400px; 
+    width: 100%;
 }
 
 /* Base button style */
@@ -170,7 +171,7 @@ button span {
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 0.7px;
-    position: relative; /* Ensure span is on top of pseudo-elements */
+    position: relative;
     z-index: 10;
 }
 
@@ -397,33 +398,46 @@ button:hover span {
 
 .detalhes-adicionais {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Layout dinâmico */
     gap: 15px;
     margin-top: 20px;
     padding-top: 20px;
     border-top: 1px solid var(--border-alpha);
 }
 
-.detalhes-adicionais div {
+.detalhe-item {
+    background: var(--background-dark-alpha);
+    border-radius: 10px;
+    padding: 15px;
     text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.detalhes-adicionais p:first-child {
-    font-size: 0.8em;
+.detalhe-item:hover {
+    background: var(--background-dark-alpha-hover);
+    transform: translateY(-5px);
+}
+
+.detalhe-label {
+    font-size: 0.9em;
     opacity: 0.8;
-    margin-bottom: 5px;
+    margin: 0 0 8px 0; /* Aumenta o espaço */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.detalhes-adicionais p:last-child {
-    font-size: 1.3em;
+.detalhe-valor {
+    font-size: 1.6em;
     font-weight: 600;
+    margin: 0;
+    line-height: 1.2;
 }
 
 /* ====================================
    PREVISÃO 5 DIAS (COLUNA DIREITA)
    ==================================== */
 #previsao-5-dias {
-    flex: 1; /* Coluna da direita */
+    flex: 1; /* Coluna da direita um pouco maior */
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -457,6 +471,11 @@ button:hover span {
     align-items: center;
     gap: 15px;
     font-weight: 500;
+}
+
+.dia-previsao-info > div > p:first-child {
+    font-size: 1.1em;
+    font-weight: 600;
 }
 
 .dia-previsao-info img {
@@ -648,11 +667,6 @@ body::after {
 .rain::after {
     background: url('https://i.imgur.com/JXJqR2r.png') repeat;
     animation: rain 0.5s linear infinite;
-}
-
-@keyframes rain {
-    0% { background-position: 0 0; }
-    100% { background-position: 0 100%; }
 }
 
 /* ====================================

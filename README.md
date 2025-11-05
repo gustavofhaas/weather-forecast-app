@@ -4,21 +4,11 @@ Um aplicativo web simples e elegante para consultar o clima atual, previsões fu
 
 ---
 
-### 🔗 Demo Ao Vivo
-
-**[>> Clique aqui para ver o projeto em ação <<](URL_DA_SUA_DEMO_AQUI)**
-
-*(Instrução: Depois de hospedar o front-end no GitHub Pages, Netlify ou Vercel, substitua o link acima.)*
-
----
-
 ### 📸 Screenshots
 
 | Versão Desktop | Versão Mobile |
 | :---: | :---: |
-| ![Screenshot da versão desktop do ClimaAgora](URL_DO_SEU_SCREENSHOT_DESKTOP_AQUI) | ![Screenshot da versão mobile do ClimaAgora](URL_DO_SEU_SCREENSHOT_MOBILE_AQUI) |
-
-*(Instrução: Tire os screenshots, adicione-os a uma pasta no seu projeto (ex: `assets`) e substitua as URLs acima.)*
+| ![Screenshot da versão desktop do ClimaAgora](./assets/desktop.png) | ![Screenshot da versão mobile do ClimaAgora](./assets/mobile.png) |
 
 ---
 
