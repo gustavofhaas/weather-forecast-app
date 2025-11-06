@@ -79,7 +79,6 @@ Com o servidor back-end rodando, simplesmente abra o arquivo `index.html` na rai
 ### 🌟 Melhorias Futuras
 
 *   [ ] Adicionar testes unitários para as funções de manipulação de dados.
-*   [ ] Implementar um sistema de unidades (Celsius/Fahrenheit) mais robusto.
 *   [ ] Melhorar a acessibilidade (ARIA).
 
 ---

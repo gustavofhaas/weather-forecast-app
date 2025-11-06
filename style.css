@@ -355,6 +355,25 @@ button:hover span {
 #nome-cidade {
     font-size: 2em;
     font-weight: 600;
+    display: flex; /* Para alinhar o botão de favorito */
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.add-favorito-btn {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: var(--favorites-yellow);
+    padding: 0;
+    margin: 0;
+    transition: transform 0.2s ease;
+}
+
+.add-favorito-btn:hover {
+    transform: scale(1.2);
 }
 
 .alerta-clima {
@@ -658,8 +677,10 @@ button:hover span {
 body::after {
     content: '';
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
     z-index: -1; /* Abaixo do conteúdo */
 }
@@ -667,6 +688,80 @@ body::after {
 .rain::after {
     background: url('https://i.imgur.com/JXJqR2r.png') repeat;
     animation: rain 0.5s linear infinite;
+}
+
+/* ====================================
+   FOOTER
+   ==================================== */
+.site-footer {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: var(--text-light);
+    padding: 40px 20px;
+    margin-top: 50px;
+    border-top: 1px solid var(--border-alpha);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    text-align: left;
+}
+
+.site-footer h4 {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--primary-blue);
+}
+
+.footer-about p {
+    font-size: 0.9em;
+    line-height: 1.6;
+    opacity: 0.8;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+    color: var(--accent-green);
+}
+
+.footer-social a {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.footer-social a:hover {
+    transform: scale(1.2);
+    color: var(--accent-green);
+}
+
+.footer-copyright {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-alpha);
+    font-size: 0.9em;
+    opacity: 0.7;
 }
 
 /* ====================================
@@ -725,6 +820,10 @@ body::after {
 
     .dia-previsao-temp {
         text-align: center;
+    }
+
+    .modal-content {
+        width: 90%;
     }
 }
 
@@ -812,4 +911,3 @@ body::after {
   78% { stroke-dasharray: 40 400; stroke-width: 30; stroke-dashoffset: -395; }
   86%, to { stroke-dasharray: 0 440; stroke-width: 20; stroke-dashoffset: -440; }
 }
-
