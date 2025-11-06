@@ -322,7 +322,7 @@ function inicializarMapa(lat, lon) {
 
     document.querySelectorAll('.mapa-controle-botao').forEach(botao => {
         const layerName = botao.dataset.layer;
-        tileLayers[layerName] = L.tileLayer(`http://localhost:3000/api/map/${layerName}/{z}/{x}/{y}`, { attribution: '&copy; OpenWeatherMap' });
+        tileLayers[layerName] = L.tileLayer(`https://clima-agora-backend.onrender.com/api/map/${layerName}/{z}/{x}/{y}`, { attribution: '&copy; OpenWeatherMap' });
         
         botao.addEventListener('click', (e) => {
             if (activeLayer) {
@@ -345,7 +345,7 @@ function inicializarMapa(lat, lon) {
 // =================================================================================================
 
 async function fetchData(openWeatherUrl) {
-    const proxyUrl = `http://localhost:3000/api/weather?url=${encodeURIComponent(openWeatherUrl)}`;
+    const proxyUrl = `https://clima-agora-backend.onrender.com/api/weather?url=${encodeURIComponent(openWeatherUrl)}`;
     const resposta = await fetch(proxyUrl);
     if (!resposta.ok) {
         const errorData = await resposta.json().catch(() => ({ message: 'Erro desconhecido no servidor.' }));
