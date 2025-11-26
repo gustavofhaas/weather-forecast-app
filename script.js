@@ -385,7 +385,7 @@ async function buscarDadosClimaticos(cidade = null, lat = null, lon = null) {
         processarEExibirDados(dadosAtuais, dadosPrevisao, dadosAr, dadosAlertas);
 
     } catch (erro) {
-        showError(erro.message);
+        showError(`Erro: ${erro.message}. Por favor, tente novamente.`);
     } finally {
         hideLoader();
     }
@@ -437,7 +437,7 @@ DOMElements.botaoLocalizacao.addEventListener('click', () => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             (pos) => buscarDadosClimaticos(null, pos.coords.latitude, pos.coords.longitude),
-            () => showError('Não foi possível obter sua localização.')
+            () => showError('Erro: Não foi possível obter sua localização.')
         );
     }
 });

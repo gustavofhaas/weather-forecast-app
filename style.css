@@ -12,6 +12,10 @@
     --font-orbitron: 'Orbitron', 'Poppins', sans-serif;
 }
 
+html {
+    font-size: 75%;
+}
+
 /* Título principal customizado */
 #titulo-principal {
     font-family: var(--font-orbitron);
@@ -109,7 +113,6 @@ body {
     padding: 0;
     transition: background 1s ease;
     font-size: 1em;   /* Fonte geral do site */
-    zoom: 0.75;
 }
 
 /* ====================================
